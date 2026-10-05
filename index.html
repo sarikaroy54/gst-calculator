@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+```
+<title>GST Calculator</title>
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+/>
+
+<link rel="stylesheet" href="styles.css" />
+```
+
+  </head>
+
+  <body>
+    <header class="container">
+      <hgroup>
+        <h1>GST Calculator</h1>
+        <p>Calculate your GST amount easily</p>
+      </hgroup>
+    </header>
+
+```
+<main class="container">
+  <section>
+    <p>
+      Enter your amount and GST rate to calculate the GST amount and total
+      price instantly.
+    </p>
+  </section>
+
+  <section>
+    <div class="grid">
+      <input
+        placeholder="Enter amount"
+        id="inputOne"
+        type="number"
+        required
+      />
+
+      <input
+        placeholder="Enter GST Percentage"
+        id="inputTwo"
+        type="number"
+        required
+      />
+
+      <button type="button" id="btn">Calculate GST</button>
+    </div>
+  </section>
+
+  <section>
+    <p id="result"></p>
+  </section>
+</main>
+
+<footer class="container neog-footer">
+  <small>
+    Go from zero to hero in full-stack development with
+    <a href="https://neog.camp">neog.camp</a>
+  </small>
+</footer>
+
+<script>
+ 
+  const buttonElement = document.getElementById("btn")
+
+  function calculation(inputFirst, inputSecond){
+    const resultOne = inputFirst*inputSecond/100
+    const resultLast = inputFirst + resultOne
+    return{
+      resultOne: resultOne.toFixed(2),
+      resultLast: resultLast.toFixed(2),
+    }
+  }
+  
+
+  function HandleButton(){
+    const inputElementFirst = document.getElementById("inputOne")
+  const inputElementSecond = document.getElementById("inputTwo")
+  const inputFirst = Number(inputElementFirst.value)
+  const inputSecond = Number(inputElementSecond.value)
+  const resultElement = document.getElementById("result")
+  const output = calculation(inputFirst, inputSecond)
+
+  resultElement.innerText = "Your gst amount is " + output.resultOne + " and final amount is: " + output.resultLast
+  
+  }
+
+  buttonElement.addEventListener("click",HandleButton)
+</script>
+
+
+  </body>
+</html>
